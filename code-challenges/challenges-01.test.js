@@ -126,6 +126,14 @@ This function should use forEach to populate your grocery list based on the stor
 
 const createList = (availableItems) => {
   // Solution code here...
+  const result = [];
+  
+  availableItems.forEach(dict =>{
+    if(dict.available === true){
+      result.push(dict.name);
+    }    
+  })
+  return result;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -144,6 +152,22 @@ Return the resulting output array.
 
 const fizzbuzz = (arr) => {
   // Solution code here...
+  const result = [];
+  arr.forEach(number =>{
+    if(number % 3 === 0 && number % 5 === 0){
+      result.push("Fizz Buzz");
+    }
+    else if(number % 3 === 0){
+      result.push("Fizz");
+    }
+    else if(number % 5 === 0){
+      result.push("Buzz");
+    }
+    else{
+      result.push(number);
+    }
+  })
+  return result;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -188,7 +212,7 @@ describe('Testing challenge 5', () => {
   });
 });
 
-xdescribe('Testing challenge 6', () => {
+describe('Testing challenge 6', () => {
   const inventory = [{ name: 'apples', available: true }, { name: 'pears', available: true }, { name: 'oranges', available: false }, { name: 'bananas', available: true }, { name: 'blueberries', available: false }];
 
   test('It should only add the available items to the list', () => {
@@ -197,7 +221,7 @@ xdescribe('Testing challenge 6', () => {
   });
 });
 
-xdescribe('Testing challenge 7', () => {
+describe('Testing challenge 7', () => {
   const inputs = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16];
 
   test('It should print out messages or numbers', () => {
