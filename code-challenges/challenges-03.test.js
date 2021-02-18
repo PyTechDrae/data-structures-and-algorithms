@@ -225,6 +225,19 @@ For example, [1, 14, 0.2, -281, 54782] is only correctly sorted in that order.
 
 const sortNumbersByLength = (arr) => {
   // Solution code here...
+  for(let i=0;i<arr.length;i++){
+    let pointer = arr.length -1;
+    while(i <= pointer){
+        if(arr[i].toString().length > arr[pointer].toString().length){
+          let temp = arr[i];
+          arr[i] = arr[pointer];
+          arr[pointer] = temp;
+        }
+        pointer--;
+      }
+    }  
+  console.log(arr);
+  return arr;
 };
 
 /*-----------------------------------------------------------------------------------------------
@@ -394,7 +407,7 @@ describe('Testing challenge 8', () => {
   });
 });
 
-xdescribe('Testing challenge 9', () => {
+describe('Testing challenge 9', () => {
   test('It should sort numbers by their length', () => {
     expect(sortNumbersByLength([10, 2.8, 1, -47.75])).toStrictEqual([1, 10, 2.8, -47.75]);
     expect(sortNumbersByLength([100, 2.82, 1, -47.75])).toStrictEqual([1, 100, 2.82, -47.75]);
