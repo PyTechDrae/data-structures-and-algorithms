@@ -191,6 +191,9 @@ Return a new array containing just the verbs. For example, ['Mix until evenly di
 const stepActions = (recipe) => {
   let result = [];
   // Solution code here...
+  for(let i=0;i<recipe.steps.length;i++){
+    result.push(recipe.steps[i].split(' ')[0]);
+  }
 
   return result;
 };
@@ -210,6 +213,22 @@ For example:
 
 const removeEvenValues = (arr) => {
   // Solution code here...
+  for(let i=0;i<arr.length;i++)
+  {
+    let pointer = arr.length - 1;
+    if(arr[i] % 2 === 0){
+      arr.splice(i,1);
+    }
+    while(i < pointer)
+    {
+      if(arr[pointer] % 2 === 0)
+      {
+        arr.splice(pointer,1);
+      }
+      pointer--;
+    }
+
+  }
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -332,14 +351,14 @@ describe('Testing challenge 7', () => {
   });
 });
 
-xdescribe('Testing challenge 8', () => {
+describe('Testing challenge 8', () => {
   test('It should return a list of recipe steps', () => {
     expect(stepActions(gruffaloCrumble)).toStrictEqual(['Pre-heat', 'De-prickle', 'Sprinkle', 'Mix', 'Grease', 'Combine', 'Fold', 'Spread', 'Bake']);
     expect(stepActions(gruffaloCrumble).length).toStrictEqual(9);
   });
 });
 
-xdescribe('Testing challenge 9', () => {
+describe('Testing challenge 9', () => {
   test('It should remove the even numbers from the array', () => {
     let list = [1, 2, 3, 4, 5, 6];
     removeEvenValues(list);
