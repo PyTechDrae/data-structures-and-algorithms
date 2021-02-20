@@ -23,21 +23,25 @@ let starWarsPeople = [
     "eye_color": "red"
   }
 ];
+const swap = (arr,leftIdx,rightIdx) =>{
+  let temp = arr[leftIdx];
+  arr[leftIdx] = arr[rightIdx];
+  arr[rightIdx] = arr[leftIdx];
+};
 
 const sortStarWarsCharacters = (starWarsArr) => {
   // Solution code here...
-  starWarsArr.sort((left,right)=>{
-    if(left.height > right.height)
-    {
-      return 1;
+
+  for(let i=0;i< starWarsArr.length;i++){
+    let end = starWarsArr.length - 1;
+    while((i + 1) < end){
+      if(starWarsArr[i].height < starWarsArr[i + 1].height){
+          swap(starWarsArr,i,i+1);
+      } 
+      end--;
     }
-    else if(left.height < right.height){
-      return -1;
-    }
-    else{
-      return 0;
-    }
-  });
+  }
+  
   return starWarsArr;  
 }
 
@@ -49,6 +53,9 @@ Write a function named removeThree that takes an index and an array. The functio
 
 const removeThree = (idx, arr) => {
   // Solution code here...
+  arr.splice(idx,3);
+  return arr;
+
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -59,6 +66,7 @@ Write a function named joinArray that takes an array and joins all of the elemen
 
 const joinArray = (arr) => {
   // Solution code here...
+  return arr.join(' ');
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -77,6 +85,11 @@ For example, if the input is 'Welcome', the output will be:
 const howMuchPencil = (str) => {
   let result = [];
   // Solution code here...
+  result.push(str);
+  for(let i=1;i<= str.length;i++){
+    result.push(str.slice(i));
+  }
+
   return result;
 };
 
@@ -90,6 +103,7 @@ For example, wordsToCharList('gregor') returns ['g','r','e','g','o','r'].
 
 const wordsToCharList = (arr) => {
   // Solution code here...
+  return [...arr];
 };
 
 
@@ -133,12 +147,19 @@ const gruffaloCrumble = {
   ]
 };
 
-
 const listFoods = (recipe) => {
   let result = [];
   // Solution code here...
+  for(let i=0;i<gruffaloCrumble.ingredients.length;i++){
+  let matchArr = [...gruffaloCrumble.ingredients[i].matchAll(' ')];
+  let targetSpaceIdx = matchArr[1].index;
+  let temp = gruffaloCrumble.ingredients[i].substring(targetSpaceIdx+1);
+  result.push(temp);
+}  
   return result;
 };
+
+
 
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 7 - Stretch Goal
@@ -150,7 +171,10 @@ You may also use other string or array methods.
 
 const splitFoods = (recipe) => {
   let result = [];
-  // Solution code here...
+  // Solution code here...  
+  for(let i=0;i<recipe.ingredients.length;i++){
+    result.push(recipe.ingredients[i].split(' ').splice(2).join(' '));
+  };
   return result;
 };
 
@@ -167,6 +191,7 @@ Return a new array containing just the verbs. For example, ['Mix until evenly di
 const stepActions = (recipe) => {
   let result = [];
   // Solution code here...
+
   return result;
 };
 
@@ -264,19 +289,19 @@ describe('Testing challenge 1', () => {
   })
 });
 
-xdescribe('Testing challenge 2', () => {
+describe('Testing challenge 2', () => {
   test('It should return an array with three items removed', () => {
     expect(removeThree(2, [1, 2, 3, 4, 5, 6, 7, 8])).toStrictEqual([1, 2, 6, 7, 8]);
   });
 });
 
-xdescribe('Testing challenge 3', () => {
+describe('Testing challenge 3', () => {
   test('It should join an array', () => {
     expect(joinArray(['hello', '301', 'students'])).toStrictEqual('hello 301 students');
   });
 });
 
-xdescribe('Testing challenge 4', () => {
+describe('Testing challenge 4', () => {
   test('It should return a list of shortening words', () => {
     expect(howMuchPencil('Welcome')).toStrictEqual(['Welcome', 'elcome', 'lcome', 'come', 'ome', 'me', 'e', '']);
     expect(howMuchPencil('Welcome').length).toStrictEqual(8);
@@ -285,7 +310,7 @@ xdescribe('Testing challenge 4', () => {
   });
 });
 
-xdescribe('Testing challenge 5', () => {
+describe('Testing challenge 5', () => {
   test('It should return an array of individual letters', () => {
     expect(wordsToCharList('Gregor')).toStrictEqual(['G', 'r', 'e', 'g', 'o', 'r']);
     expect(wordsToCharList('Gregor').length).toStrictEqual(6);
@@ -294,14 +319,14 @@ xdescribe('Testing challenge 5', () => {
   });
 });
 
-xdescribe('Testing challenge 6', () => {
+describe('Testing challenge 6', () => {
   test('It should return a list of foods', () => {
     expect(listFoods(gruffaloCrumble)).toStrictEqual(['Gruffalo', 'oats', 'brown sugar', 'flour', 'pure maple syrup', 'chopped nuts', 'baking soda', 'baking powder', 'cinnamon', 'melted butter', 'fresh water']);
     expect(listFoods(gruffaloCrumble).length).toStrictEqual(11);
   });
 });
 
-xdescribe('Testing challenge 7', () => {
+describe('Testing challenge 7', () => {
   test('It should return a list of foods', () => {
     expect(splitFoods(gruffaloCrumble)).toStrictEqual(['Gruffalo', 'oats', 'brown sugar', 'flour', 'pure maple syrup', 'chopped nuts', 'baking soda', 'baking powder', 'cinnamon', 'melted butter', 'fresh water']);
   });
