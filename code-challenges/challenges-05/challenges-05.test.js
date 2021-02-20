@@ -291,9 +291,32 @@ For example, extractVowels('gregor') returns ['grgr', 'eo'].
 
 Similarly, extractVowels('The quick brown fox') returns ['Th qck brwn fx', 'eioou']
 ------------------------------------------------------------------------------------------------ */
-
+/*
+const swap = (arr, leftIdx,rightIdx)=>{
+  let temp = arr[leftIdx];
+  arr[leftIdx] = arr[rightIdx];
+  arr[rightIdx] = temp;
+}
+*/
 const extractVowels = (str) => {
   // Solution code here...
+  let result = [];
+  result.push([...str.split(/[aeiouAEIOU]/)].join(''));
+  let vowels = [...[str.split(/[^aeiouAEIOU$]/).join('')][0]];
+  for(let i=0;i<vowels.length;i++){
+    let pointer = vowels.length - 1;
+    while(i < pointer){
+      if(vowels[i] > vowels[pointer]){
+        let temp = vowels[i];
+        vowels[i] = vowels[pointer];
+        vowels[pointer] = temp;
+        vowels[i];
+      }
+      pointer--;
+    }
+  }
+  result.push(vowels.join(''));
+  return result;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -409,7 +432,7 @@ describe('Testing challenge 12', () => {
   });
 });
 
-xdescribe('Testing challenge 13', () => {
+describe('Testing challenge 13', () => {
   test('It should return the string without vowels', () => {
     expect(extractVowels('gregor')).toStrictEqual(['grgr', 'eo']);
     expect(extractVowels('gregor').length).toStrictEqual(2);
