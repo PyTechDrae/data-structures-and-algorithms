@@ -26,7 +26,7 @@ let starWarsPeople = [
 const swap = (arr,leftIdx,rightIdx) =>{
   let temp = arr[leftIdx];
   arr[leftIdx] = arr[rightIdx];
-  arr[rightIdx] = arr[leftIdx];
+  arr[rightIdx] = temp;
 };
 
 const sortStarWarsCharacters = (starWarsArr) => {
