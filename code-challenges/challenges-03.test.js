@@ -160,36 +160,19 @@ Write a function named alphabetizeBetter that takes in an array of strings and r
 
 For example, ['Alphabet', 'alphabet', 'carrot', 'Zebra'] is correctly sorted, and so is ['alphabet', 'Alphabet', 'carrot', 'Zebra'].
 ------------------------------------------------------------------------------------------------ */
-const swap = (lword,rword) =>{
-  let temp = lword;
-  lword = rword;
-  rword = temp;
-}
-
-const alphabetizeBetter = (arr) => {
-  // Solution code here...
-  for(let i=0;i<arr.length;i++){
-    let pointer = arr.length -1;
-    while(i <= pointer){
-      let left = arr[i].toLowerCase().charAt(0);
-      let right = arr[pointer].toLowerCase().charAt(0);
-      let v = 0;
-      let orgLeft = arr[i];
-      let orgRight = arr[pointer];
-      if(left > right ){
-        swap(orgLeft,orgRight);
-      }
-      if(left === right){
-        v++;
-        arr[i] = arr[i].slice(v);
-        arr[pointer] = arr[pointer].slice(v)
-      }
-      
-      pointer--;
+const alphabetizeBetter = arr =>{
+  arr.sort(function (a,b){
+    if(a.toLowerCase() < b.toLowerCase()){
+      return -1;
     }
-  }
+    else if(a.toLowerCase() > a.toLowerCase() ){
+      return 1;
+    }else{
+      return 0;
+    }
+  });
   return arr;
-};
+}
 
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 8 - Stretch Goal
@@ -260,6 +243,18 @@ const people = [
 
 const sortPeople = (arr) => {
   // Solution code here...
+  arr.sort((a,b)=>{
+    if(a.lastName < b.lastName){
+      return -1;
+    }
+    else if(a.lastName > b.lastName){
+      return 1;
+    }
+    else{
+      return 0;
+    }
+  })
+  return arr;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -274,6 +269,42 @@ If two people have the same full name, the younger one should come first. Do not
 
 const sortPeopleBetter = (arr) => {
   // Solution code here...
+  arr.sort((a,b) =>{
+    if(a.lastName === b.lastName && a.firstName === b.firstName){
+      if(a.age < b.age){
+        return -1;
+      }
+      else if( a.age > b.age){
+        return 1;
+      }
+      else{
+        return 0;
+      }
+    }
+    else if(a.lastName === b.lastName){
+      if(a.firstName < b.firstName){
+        return -1;
+      }
+      else if(a.firstName > b.firstName){
+        return 1;
+      }
+      else{
+        return 0;
+      }
+    }
+    else{
+      if(a.lastName < b.lastName){
+        return -1;
+      }
+      else if(a.lastName > b.lastName){
+        return 1;
+      }
+      else{
+        return 0;
+      }
+    }
+  })
+  return arr;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -297,9 +328,19 @@ const meetings = [
   new Meeting('Monday', '0900', '0945'),
   new Meeting('Friday', '1200', '1345'),
 ];
-
+const weekDays = ['Monday','Tuesday','Wednesday','Thursday','Friday'];
 const sortMeetingsByDay = (arr) => {
   // Solution code here...
+  arr.sort((a,b)=>{
+    if(weekDays.indexOf(a.dayOfWeek) < weekDays.indexOf(b.dayOfWeek)){
+      return -1;
+    }else if(weekDays.indexOf(a.dayOfWeek) > weekDays.indexOf(b.dayOfWeek)){
+      return 1;
+    }else{
+      return 0;
+    }
+  })
+  return arr;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -314,6 +355,34 @@ You DO NOT need to use your solution to Challenge 9 in completing Challenge 10.
 
 const sortSchedule = (arr) => {
   // Solution code here...
+  arr.sort((a,b)=>{
+    let meetingLengthA = a.end - a.start;
+    let meetingLengthB = b.end - b.start;
+    if(weekDays.indexOf(a.dayOfWeek) < weekDays.indexOf(b.dayOfWeek)){
+      return -1;
+    }else if(weekDays.indexOf(a.dayOfWeek) > weekDays.indexOf(b.dayOfWeek)){
+      return 1;
+    }else{
+      if(a.start === b.start){
+        if(meetingLengthA < meetingLengthB){
+          return -1;
+        }else if(meetingLengthA > meetingLengthB){
+          return 1;
+        }else{
+          return 0;
+        }
+      }
+      if(a.start < b.start){
+        return -1;
+      }else if(a.start > b.start){
+        return 1;
+      }else{
+        return 0;
+      }
+    }
+    
+  })
+  return arr;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -382,7 +451,7 @@ describe('Testing challenge 6', () => {
   });
 });
 
-xdescribe('Testing challenge 7', () => {
+describe('Testing challenge 7', () => {
   test('It should alphabetize without regard to capitalization', () => {
     expect(alphabetizeBetter(['Alice', 'apple', 'alert', 'Average'])).toStrictEqual([ 'alert', 'Alice', 'apple', 'Average' ]);
     const ans = alphabetizeBetter(['alphabet', 'Zebra', 'Alphabet', 'carrot']);
@@ -415,7 +484,7 @@ describe('Testing challenge 9', () => {
   });
 });
 
-xdescribe('Testing challenge 10', () => {
+describe('Testing challenge 10', () => {
   test('It should sort people by their last names', () => {
     expect(sortPeople(people)).toStrictEqual([
       new Person('Casey', 'Codefellow', 38),
@@ -427,7 +496,7 @@ xdescribe('Testing challenge 10', () => {
   });
 });
 
-xdescribe('Testing challenge 11', () => {
+describe('Testing challenge 11', () => {
   test('It should sort people with more strict ordering', () => {
     const family = [
       new Person('Casey', 'Codefellows', 55),
@@ -448,7 +517,7 @@ xdescribe('Testing challenge 11', () => {
   });
 });
 
-xdescribe('Testing challenge 12', () => {
+describe('Testing challenge 12', () => {
   test('It should sort meetings by the day on which they happen', () => {
     const sortedMeetings = sortMeetingsByDay(meetings);
     expect(sortedMeetings.slice(0,2)).toEqual(expect.arrayContaining([new Meeting('Monday', '0900', '0945'), new Meeting('Monday', '0900', '1000')]));
@@ -458,7 +527,7 @@ xdescribe('Testing challenge 12', () => {
   });
 });
 
-xdescribe('Testing challenge 13', () => {
+describe('Testing challenge 13', () => {
   test('It should sort meetings by when they happen', () => {
     expect(sortSchedule(meetings)).toStrictEqual([
       new Meeting('Monday', '0900', '0945'),
