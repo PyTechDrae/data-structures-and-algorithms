@@ -11,4 +11,4 @@ NOTE: You can find an example of this configuration for your course in your clas
 
 Target the middle, first, and last index then assign a counter variable. While the counter is less than the middle index  swap the variable at the left index with the variable wih the right index.
 
-![White Board](../assets/main.png)
+![White Board](../assets/working.png)
