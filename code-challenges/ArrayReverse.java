@@ -29,6 +29,7 @@ public class ArrayReverse{
         int temp;
         temp = array[leftIdx];
         array[leftIdx]  = array[rightIdx];
-        array[rightIdx] = temp;                
+        array[rightIdx] = temp;  
+                       
     }
 }
