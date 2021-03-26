@@ -28,7 +28,7 @@ Begin by declaring 3 variables of type int: left, right, and middle. Left repres
 (set to 0). Right represents the last index of the array (length - 1) and middle represents the middle index of
 the array (right divided by 2). Iterate while the left index is smaller than the right. On each iteration compare the
 value at the middle index with the target value. If the target is smaller than the middle, set the right index to the middle.
-If the target is bigger then set the left index to middle. If the target is the same as middle simply return middle index.
+If the target is bigger set the left index to middle. If the target is the same as middle simply return middle index.
 
 ## Solution
-![WhiteBoard](assets/binarySearch.jpg)
+![WhiteBoard](assets/array-binary-search.jpg)
