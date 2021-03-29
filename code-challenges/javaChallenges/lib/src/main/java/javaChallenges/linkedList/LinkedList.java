@@ -1,4 +1,5 @@
 package javaChallenges.linkedList;
+import javaChallenges.doublyLinkedList.Node;
 
 public class LinkedList{
     public Node head;
@@ -63,4 +64,80 @@ public class LinkedList{
     }
     return count;
   }
+
+  public void append(int value){
+    Node newNode = new Node(value);
+    this.tail.next = newNode;
+    this.tail = newNode;
+  }
+  public void insertBefore(int value, int newVal){
+    Node newNode = new Node(newVal);
+    Node current = this.head;
+    boolean isHeadOrTail = this.tail.value == value || current.value == value;
+    if(!isHeadOrTail ){
+      while(current.next != null){
+        if(current.next.value == value){
+          newNode.next = current.next;
+          current.next = newNode;
+          return;
+        }
+        current = current.next;
+      }
+    }
+    else{
+      if(this.tail.value == value)
+      {
+        newNode.next = this.tail;
+        this.tail.prev.next = newNode;
+      }
+      else{
+        this.insert(newVal);
+      }
+    }
+  }
+  public void insertAfter(int value, int newVal){
+    Node newNode = new Node(newVal);
+    boolean isTail = this.tail.value == value;
+    if(isTail){
+      append(newVal);
+    }
+    else{
+      Node current = this.head;
+      while(current.next != null){
+        if(current.value == value){
+          Node temp = current.next;
+          current.next = newNode;
+          newNode.next = temp;
+          return;
+        }
+        current = current.next;
+      }
+    }
+  }
+
+  public void delete(int value){
+    boolean isHead = this.head.value == value;
+    boolean isTail = this.tail.value == value;
+    if(isHead){
+      Node temp = this.head.next;
+      this.head.next = null;
+      this.head = temp;
+    }
+    if(isTail){
+      Node temp = this.tail.prev;
+      this.tail = null;
+      this.tail = temp;
+    }
+    Node current = this.head;
+    while(current.next != null){
+      if(current.next.value == value){
+        Node temp = current.next;
+        current.next = null;
+        current.next = temp.next;
+        return;
+      }
+      current = current.next;
+    }
+  }
+
 }

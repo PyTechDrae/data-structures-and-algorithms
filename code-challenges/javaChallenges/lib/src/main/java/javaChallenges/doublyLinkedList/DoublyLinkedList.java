@@ -1,22 +1,22 @@
 package javaChallenges.doublyLinkedList;
 
 public class DoublyLinkedList {
-  public DNode head;
-  public DNode tail;
+  public Node head;
+  public Node tail;
 
   public DoublyLinkedList(){
     this.head = null;
     this.tail = null;
   }
   public void insert(int value){
-    DNode newNode = new DNode(value);
+    Node newNode = new Node(value);
     newNode.next = this.head;
     if(this.head != null)this.head.prev = newNode;
     this.head = newNode;
     if(this.tail == null) this.tail= newNode;
   }
   public boolean includes(int value){
-    DNode current = this.head;
+    Node current = this.head;
     while(current != null){
       if(current.value == value){
         return true;
@@ -28,12 +28,12 @@ public class DoublyLinkedList {
   public String toString(){
     return this._toString(this.head);
   }
-  public String _toString(DNode targetNode){
+  public String _toString(Node targetNode){
     if(targetNode == null)return "NULL";
     return "" + targetNode.value + " -> " + this._toString(targetNode.next);
   }
   public String iterativeToString(){
-    DNode current = this.head;
+    Node current = this.head;
     String result ="";
     while(current != null){
       result += current.value;
@@ -48,7 +48,7 @@ public class DoublyLinkedList {
   }
   public int countNodes(){
     int totalNodes = 0;
-    DNode current = this.head;
+    Node current = this.head;
     while(current != null){
       current = current.next;
       totalNodes++;
