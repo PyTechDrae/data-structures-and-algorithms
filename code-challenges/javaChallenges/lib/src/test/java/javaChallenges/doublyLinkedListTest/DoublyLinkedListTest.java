@@ -1,4 +1,4 @@
-package javaChallenges.linkedListTests;
+package javaChallenges.doublyLinkedListTest;
 
 import javaChallenges.doublyLinkedList.DoublyLinkedList;
 import javaChallenges.doublyLinkedList.Node;
