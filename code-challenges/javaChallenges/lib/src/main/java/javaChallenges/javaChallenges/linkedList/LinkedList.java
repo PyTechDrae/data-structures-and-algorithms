@@ -29,6 +29,18 @@ public class LinkedList{
     }
     return false;
   }
+  public boolean includesRecursive(int targetValue){
+    return includesRecursive(this.head,targetValue);
+  }
+  private boolean includesRecursive(Node current, int targetValue){
+//    assuming LL is {9} -> {7} -> null
+//    base case: we arrive at null
+//    small bit of work : node of not null : check for match: return true
+//    recursion : call the function on current.next, value
+    if(current == null)return false;
+    if(current.value == targetValue)return true;
+    return includesRecursive(current.next,targetValue);
+  }
 
   public String toString(){
     //takes in no arguments and returns a string representing all the values
