@@ -4,6 +4,7 @@ import javaChallenges.linkedList.LinkedList;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 public class LinkedListTest{
 
@@ -65,8 +66,40 @@ public class LinkedListTest{
     newList.insert(43);
     newList.insert(15);
     String actual2 = newList.toString();
-    System.out.println(actual2);
     assertEquals("Should return a string representation of the linked list: ",expected2,actual2);
   }
 
+  @Test public void testKthValue() throws Exception {
+    LinkedList test = new LinkedList();
+    test.insert(4);
+    test.insert(7);
+    test.insert(9);
+    test.insert(10);
+    test.insert(2);
+    test.insert(3);
+    int expected = 10;
+    int actual = test.kthFromEnd(3); // 10
+    assertEquals("Should return the value at the 3rd index from the end:",expected,actual);
+    boolean e2 = true;
+    int expectedAmount = 0;
+    int actualAmount = test.kthFromEnd(-1);
+    boolean invalidArgument = actualAmount < expectedAmount;
+    assertTrue("Input must be positive and within the length of the list", invalidArgument);
+  }
+
+  @Test public void testLength(){
+    LinkedList test = new LinkedList();
+    test.insert(5);
+    test.insert(2);
+    int expected = 0;
+    int actual = test.kthFromEnd(2);
+    boolean invalidArgument = actual < expected;
+    assertTrue("Input should be smaller than the length", invalidArgument);
+
+    LinkedList test2 = new LinkedList();
+    test2.insert(1);
+    int expected2 = 1;
+    int actual2 = test2.kthFromEnd(0);
+    assertEquals("Should account for a list with 1 variable",expected2,actual2);
+  }
 }

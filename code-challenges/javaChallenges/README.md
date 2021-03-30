@@ -87,3 +87,9 @@ the tail's previous to null. If any other value matches the target set the point
 previous Node to be the original next of the target. Set the targets pointer to null;
 
 ![WhiteBoard](assets/linkedListp2.png)
+
+## Challenge Description
+Write a method for the Linked List class which takes a number, k, as a parameter. Return the node’s
+value that is k from the end of the linked list. You have access to the Node class and all the
+properties on the Linked List class as well as the methods created in previous challenges.
+
