@@ -140,4 +140,29 @@ public class LinkedList{
     }
   }
 
+  public int kthFromEnd(int index){
+    Node current = this.head;
+    int currentIdx = 0;
+    int maxIndex = this.countNodes()-1;
+    if(maxIndex == index){return current.value;}
+    int target;
+    try{
+      boolean indexInRange = index < this.countNodes() && index >= 0;
+      if(indexInRange){
+        target=0;
+      }
+    }catch(Exception e){
+      System.out.println("Index Out of Bounds");
+      throw e;
+    }
+    while(current.next != null ){
+      target = (this.countNodes()-1) - currentIdx;
+      if(target == index){
+        return current.value;
+      }
+      currentIdx++;
+      current = current.next;
+    }
+    return -1;
+  }
 }
