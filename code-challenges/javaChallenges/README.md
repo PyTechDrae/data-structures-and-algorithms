@@ -56,4 +56,34 @@ If the target is bigger set the left index to middle. If the target is the same 
 
 ## Solution
 ![WhiteBoard](assets/array-binary-search.jpg)
->>>>>>> 1267f791eff668bf961f03e4568204caf003dc26
+
+# Linked List Insertions
+
+## Challenge Description
+Write the following methods for the Linked List class:
+
+`.append(value)` which adds a new node with the given value to the end of the list
+`.insertBefore(value, newVal)` which add a new node with the given newValue immediately before the first value node
+`.insertAfter(value, newVal)` which add a new node with the given newValue immediately after the first value node
+`.delete(value)` which removes a node with the given value.
+
+## Approach & Efficiency
+*Append:* Begin by declaring a new Node value and set the tail.next to the newNode. Then set the
+newNode as the current tail.
+
+*InsertBefore*: Declare a newNode and set its next node to the current heads next node.Then set
+the current head's next node to the newNode. Consider edge case in case the node is the current
+head or tail. If it is the head, set the newNode to be the current head (using insert) and it's
+next to the
+previous head.
+
+*Insert After*: Compare the targetValue to the values of the current head and tail. If it is the
+head
+set the head's pointer to the newNode and the heads previous pointer to the pointer of the new
+node. If the targetValue matches with the tail, set the current tail to be the newValue.
+
+*Delete*: If target value is either the head or tail, set the current heads pointer to null or set
+the tail's previous to null. If any other value matches the target set the pointer of the
+previous Node to be the original next of the target. Set the targets pointer to null;
+
+![WhiteBoard](assets/linkedListp2.png)
