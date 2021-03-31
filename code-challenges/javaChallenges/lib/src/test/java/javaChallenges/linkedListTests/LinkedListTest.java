@@ -102,4 +102,18 @@ public class LinkedListTest{
     int actual2 = test2.kthFromEnd(0);
     assertEquals("Should account for a list with 1 variable",expected2,actual2);
   }
+
+  @Test public void testZipList(){
+    LinkedList a = new LinkedList(); // 5 ->  4 -> 3
+    LinkedList b = new LinkedList(); // 10 ->  9 -> 8
+    a.insert(3);
+    a.insert(4);
+    a.insert(5);
+    b.insert(8);
+    b.insert(9);
+    b.insert(10);
+    System.out.println(a.zipLists(b)); // 5 -> 10 -> 4 -> 9 -> 3 -> 8
+  }
+
+
 }

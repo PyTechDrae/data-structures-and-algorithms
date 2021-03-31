@@ -165,4 +165,24 @@ public class LinkedList{
     }
     return -1;
   }
+
+  public LinkedList zipLists(LinkedList b){
+    Node curr1 = this.head;
+    Node curr2 = b.head;
+
+    zipLists(curr1,curr2);
+
+    return this;
+  }
+  private void zipLists(Node curr1, Node curr2){
+    Node temp1 = curr1.next;
+    if(curr1 == null)return;
+    curr1.next = curr2;
+    Node temp2 = curr2.next;
+    if(temp2 == null)return;
+    curr2.next = temp1;
+    zipLists(temp1,temp2);
+  }
+
+
 }
