@@ -165,4 +165,20 @@ public class LinkedList{
     }
     return -1;
   }
+
+  public LinkedList zipLists(LinkedList b){
+    if(this.countNodes() == 0)return b;
+    if(b.countNodes() == 0) return this;
+    zipLists(this.head,b.head);
+    return this;
+  }
+  private void zipLists(Node a, Node b){
+    Node temp1 = a.next;
+    Node temp2 = b.next;
+    if(temp1 == null)return;
+    if(temp2 == null)return;
+    a.next = b;
+    b.next = temp1;
+    zipLists(temp1,temp2);
+  }
 }
