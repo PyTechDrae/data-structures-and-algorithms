@@ -112,7 +112,27 @@ public class LinkedListTest{
     b.insert(8);
     b.insert(9);
     b.insert(10);
-    System.out.println(a.zipLists(b)); // 5 -> 10 -> 4 -> 9 -> 3 -> 8
+    String expected = "{5} -> {10} -> {4} -> {9} -> {3} -> NULL";
+    String actual = a.zipLists(b).toString(); // 5 -> 10 -> 4 -> 9 -> 3 -> 8
+    assertEquals("Should combine both two linked lists",expected,actual);
+  }
+
+  @Test public void testAgainstNullList(){
+    LinkedList a = new LinkedList();
+    LinkedList b = new LinkedList();
+    b.insert(3);
+    b.insert(2);
+    b.insert(1);
+    String expected = "{1} -> {2} -> {3} -> NULL";
+    String actual = a.zipLists(b).toString();
+    assertEquals("Should return remaining list if a list is empty", expected,actual);
+    LinkedList c = new LinkedList();
+    a.insert(5);
+    a.insert(6);
+    a.insert(7);
+    String expected2 = "{7} -> {6} -> {5} -> NULL";
+    String actual2 = a.zipLists(c).toString();
+    assertEquals("Should return remaining list if a list is empty", expected,actual);
   }
 
 

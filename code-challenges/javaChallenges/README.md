@@ -93,3 +93,15 @@ Write a method for the Linked List class which takes a number, k, as a parameter
 value that is k from the end of the linked list. You have access to the Node class and all the
 properties on the Linked List class as well as the methods created in previous challenges.
 
+## Challenge Description
+Write a function called `zipLists` which takes two linked lists as arguments. Zip the two linked
+lists
+together into one so that the nodes alternate between the two lists and return a reference to
+the head of the zipped list.
+## Approach & Efficiency
+I decided to use the recursive method manipulating two temporary variables representing the next
+Node within each list to be zipped together. At each iteration we set the current node A and
+node B to temporaty variables and reassign their pointers as necessary.
+
+## Solution
+![WhiteBoard](assets/zipList.png)
