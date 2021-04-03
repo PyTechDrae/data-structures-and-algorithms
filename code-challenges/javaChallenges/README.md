@@ -37,9 +37,6 @@ all the values in the Linked List, formatted as:
   as a Node's value somewhere within the list
 - **ToString** : takes in no arguments and returns a string representing all the values in the Linked List
 
-
-
-=======
 # Binary Search
 
 # Challenge Description
@@ -79,7 +76,7 @@ previous head.
 
 *Insert After*: Compare the targetValue to the values of the current head and tail. If it is the
 head
-set the head's pointer to the newNode and the heads previous pointer to the pointer of the new
+set the head's pointer to the newNodeand the heads previous pointer to the pointer of the new
 node. If the targetValue matches with the tail, set the current tail to be the newValue.
 
 *Delete*: If target value is either the head or tail, set the current heads pointer to null or set
@@ -101,7 +98,36 @@ the head of the zipped list.
 ## Approach & Efficiency
 I decided to use the recursive method manipulating two temporary variables representing the next
 Node within each list to be zipped together. At each iteration we set the current node A and
-node B to temporaty variables and reassign their pointers as necessary.
+node B to temporary variables and reassign their pointers as necessary.
 
 ## Solution
 ![WhiteBoard](assets/zipList.png)
+
+# Stacks and Queues
+
+## Challenge
+Create a Node class that has properties for the value stored in the Node, and a pointer to the next node.
+Create a Stack class that has a top property. It creates an empty Stack when instantiated. Create
+a Queue class that has a front property. It creates an empty Queue when instantiated.
+This object should be aware of a default empty value assigned to front when the queue is created.
+
+## Approach & Efficiency
+Similar to the linked List all of the methods have a space and time complexity of O(1).
+
+## API
+
+`Push` - takes any value as an argument and adds a new node with that value to the top of the
+stack with an O(1) Time performance.
+`Pop` - oes not take any argument, removes the node from the top of the stack, and returns the
+node’s value.
+`Peek` - does not take an argument and returns the value of the node located on top of the stack,
+without removing it from the stack.
+`isEmpty` - takes no argument, and returns a boolean indicating whether or not the stack is empty.
+
+`Enqueue` - takes any value as an argument and adds a new node with that value to the back of the
+queue with an O(1) Time performance.
+`Dequeue` - does not take any argument, removes the node from the front of the queue, and returns
+the node’s value.
+`Peek` - oes not take an argument and returns the value of the node located in the front of the
+queue, without removing it from the queue.
+`IsEmpty` - takes no argument, and returns a boolean indicating whether or not the queue is empty.
