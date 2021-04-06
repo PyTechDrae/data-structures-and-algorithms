@@ -37,4 +37,17 @@ public class Stack<T> {
     return this.top == null;
   }
 
+  @Override
+  public String toString() {
+    Stack<T> temp = this;
+    Node<T> current = temp.top;
+    String res = "";
+    while(!temp.isEmpty()){
+      res += current.value.toString() + " -> ";
+      temp.pop();
+      current = temp.top;
+    }
+    res += "NULL";
+    return res;
+  }
 }

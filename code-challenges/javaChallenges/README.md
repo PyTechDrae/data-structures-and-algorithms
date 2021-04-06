@@ -131,3 +131,24 @@ the node’s value.
 `Peek` - oes not take an argument and returns the value of the node located in the front of the
 queue, without removing it from the queue.
 `IsEmpty` - takes no argument, and returns a boolean indicating whether or not the queue is empty.
+
+
+# PseudoQueue
+Implement a Queue using two Stacks.
+
+## Challenge
+
+Create a brand new PseudoQueue class. Do not use an existing Queue. Instead, this PseudoQueue
+class will implement our standard queue interface (the two methods listed below), but will
+internally only utilize 2 Stack objects.
+
+## Approach & Efficiency
+
+For this challenge I decided to create a help function `reverse` which takes the main Stack and
+pushes all of its contents into a temporary stack. When executing the `enqueue` method the Node
+is simply added to the top of the stack. Executing the `dequeue` method while execute `reverse`
+then pop the top Node off of the stack then execute `reverse` once more.
+
+## Solution
+
+![Psuedoqueue](assets/queue-with-stacks.png)
