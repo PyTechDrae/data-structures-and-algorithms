@@ -152,3 +152,22 @@ then pop the top Node off of the stack then execute `reverse` once more.
 ## Solution
 
 ![Psuedoqueue](assets/queue-with-stacks.png)
+
+# Challenge Summary
+Create a class called AnimalShelter which holds only dogs and cats. The shelter operates using a first-in, first-out approach.
+
+## Challenge Description
+
+Implement the following methods:
+`enqueue(animal)`: adds animal to the shelter. animal can be either a dog or a cat object.
+`dequeue(pref)`: returns either a dog or a cat. If pref is not "dog" or "cat" then return null.
+
+## Approach & Efficiency
+For this challenge I decided to create two stacks (one for dogs and another for cats). The input
+would be an Animal object. On execution the enqueue function would assess the type of the object
+and push the object into its respective queue. Any other input would throw a
+NoSuchElementExistsException. Dequeuing would compare the input string to the type of animal
+(Dog or Cat)then return that value.
+
+## Solution
+![AnimalShelterQueue](assets/fifo-animal-shelter.jpg)
