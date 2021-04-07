@@ -171,3 +171,25 @@ NoSuchElementExistsException. Dequeuing would compare the input string to the ty
 
 ## Solution
 ![AnimalShelterQueue](assets/fifo-animal-shelter.jpg)
+
+# Challenge Summary
+Create a function that takes a string as its only argument, and returns a boolean
+representing whether or not the brackets in the string are balanced
+## Challenge Description
+There are 3 types of brackets:
+
+- Round Brackets : `()`
+- Square Brackets : `[]`
+- Curly Brackets : `{}`
+
+
+  ![MultiBracketChallenge](assets/multi-bracket-validation.jpg)
+## Approach & Efficiency
+I decided to implement a counter for each group of opening and closing brackets. I began by
+spliting the input string into a String array and iterating through it. Whenever an opening
+character is found, the function checks if the corresponding counter is set to 0, then
+increments by 1. The counter will only increment if the current element is the closing character.
+Once the counter becomes divisible by 2 (meaning a match was made) it is then reset to zero.
+Once outside of the loop, we add up all of the counters and check to see if the total is greater
+than 0. If it is we return false otherwise return true.
+
