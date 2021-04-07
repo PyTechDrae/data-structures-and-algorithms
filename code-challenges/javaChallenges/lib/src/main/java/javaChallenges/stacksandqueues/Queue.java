@@ -3,8 +3,8 @@ package javaChallenges.stacksandqueues;
 import java.util.NoSuchElementException;
 
 public class Queue<T> {
-    Node<T> front;
-    Node<T> rear;
+    public Node<T> front;
+    public Node<T> rear;
 
     public Queue(){
       this.front = null;
@@ -43,5 +43,13 @@ public class Queue<T> {
 
   public boolean isEmpty(){
       return this.front == null;
+  }
+
+  @Override
+  public String toString() {
+    return "Queue{" +
+      "front=" + front +
+      ", rear=" + rear +
+      '}';
   }
 }
